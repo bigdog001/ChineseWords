@@ -25,34 +25,39 @@
                     var trid = all_cn_triditional[i];
                     var sounds = all_cn_sound[i];
 
-                    var rowcontent = "<tr><td class='simpleCN'>" + simple + "</td><td class='triditionalCN'>" + trid + "</td><td class='CNPY'>" + sounds + "</td></tr>";
+                    var rowcontent = "<tr><td class='simpleCN'>" + simple + "</td><td class='triditionalCN'>" + trid + "</td><td class='CNPY'>" + sounds + " <button onclick=godetails('" + simple + "')>details</button></td></tr>";
                     $("#id_displayable tbody").append(rowcontent);
 
 
                 }
             });
+
+            function godetails(theword) {
+                var url = "https://baike.baidu.com/item/"+theword;
+                window.open(url);
+            }
         </script>
     </head>
 
     <body>       
 
+        <div class="container">
+            <div class="table-responsive">
+                <table  id="id_displayable" class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>简体</th>
+                            <th>繁体</th>
+                            <th>注音</th>                        
+                        </tr>
+                    </thead>
+                    <tbody>                                    
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="table-responsive">
-            <table  id="id_displayable" class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>简体</th>
-                        <th>繁体</th>
-                        <th>注音</th>                        
-                    </tr>
-                </thead>
-                <tbody>                                    
-                </tbody>
-            </table>
+
         </div>
-
-
-
     </body>
 
 </html>
