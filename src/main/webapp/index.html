@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>中國漢字</title>
+        <meta name="description" content="中國漢字 中國漢字全文">    
+        <link rel="stylesheet" href="./res/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="./res/bootstrap/mycharacter.css">
+        <script type="application/javascript" src="./res/js/jquery-1.11.1.min.js"></script>
+        <script language="JavaScript" src="./res/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./res/js/data.js"></script>
+        <script>
+            var characterLength = all_cn_simple.length;
+            var pageSize = 100;
+            var size_tmp = characterLength / pageSize;
+            var totalPages = (characterLength % pageSize === 0) ? size_tmp : (parseInt(size_tmp)) + 1;
+
+            $(document).ready(function () {
+                for (var i = 0; i < 50; i++) {
+
+                    var simple = all_cn_simple[i];
+                    var trid = all_cn_triditional[i];
+                    var sounds = all_cn_sound[i];
+
+                    var rowcontent = "<tr><td class='simpleCN'>" + simple + "</td><td class='triditionalCN'>" + trid + "</td><td class='CNPY'>" + sounds + "</td></tr>";
+                    $("#id_displayable tbody").append(rowcontent);
+
+
+                }
+            });
+        </script>
+    </head>
+
+    <body>       
+
+
+        <div class="table-responsive">
+            <table  id="id_displayable" class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>简体</th>
+                        <th>繁体</th>
+                        <th>注音</th>                        
+                    </tr>
+                </thead>
+                <tbody>                                    
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </body>
+
+</html>
