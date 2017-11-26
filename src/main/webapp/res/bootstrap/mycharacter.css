@@ -7,3 +7,12 @@
 .CNPY{
     
 }
+#id_displayable{
+      border:1px solid black;
+}
+.myword{
+     /*background: #262626;*/
+}
+.theword{
+    font-size: 50px;
+}
