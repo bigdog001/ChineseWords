@@ -1,0 +1,18 @@
+.mytest {
+    box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;
+    background-color: #dedef8; 
+    padding: 15px
+}
+.mytest1 {
+    box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;
+    background-color: #c58ccc; 
+    padding: 15px
+}
+
+.themeans{
+    font-size:20px
+}
+
+.mypronounce{
+    font-size:45px
+}
