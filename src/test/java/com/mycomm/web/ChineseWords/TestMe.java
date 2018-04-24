@@ -6,9 +6,7 @@
 package com.mycomm.web.ChineseWords;
 
 import com.mycomm.itool.MyPublicTool.SystemUtil;
-import com.spreada.utils.chinese.ZHConverter;
 import java.io.File;
-import net.sourceforge.pinyin4j.PinyinHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -29,35 +27,32 @@ public class TestMe {
 
     public void makeCodedWords(String path, String name) {
 //        String path = "C:\\Users\\jw362j\\a\\z_temp\\古文观止\\古文观止_注音注解_html\\25.html";
-        String path_out = "C:\\Users\\jw362j\\a\\z_temp\\古文观止\\古文观止_注音注解_繁体_html\\";
+        String path_out = "C:\\Users\\jw362j\\Desktop\\gwgzj\\";
         String content = SystemUtil.ReadFromFile(path, null);
         StringBuilder sb_temp = new StringBuilder();
         int length = content.length();
         for (int i = 0; i < length; i++) {
-            char ttt = content.charAt(i);
-            if (!isChinese(ttt)) {
-                sb_temp.append(ttt);
+            char x = content.charAt(i);
+            String ttt = x+"";
+            if (!isChinese(x)) {
+                if ("\n".equals(ttt) || "\t".equals(ttt)) {
+                    sb_temp.append("<br/>");
+                } else if(" ".equals(ttt)){
+                    sb_temp.append("&nbsp;");
+                }else{
+                    sb_temp.append(ttt);
+                }
             } else {
-                String simplifiedSrc = ttt + "";
-                String traditional = ZHConverter.convert(simplifiedSrc, ZHConverter.TRADITIONAL);
-                sb_temp.append(traditional);
-                log.info(traditional + " is chinese words!");
+                sb_temp.append("<a class=\"tooltip-test\"  onclick=\"openDictionary('").append(ttt).append("')\">").append(ttt).append("</a> ");
             }
         }
-        SystemUtil.WriteIntoFile(path_out+name, sb_temp.toString(), null);
+        SystemUtil.WriteIntoFile(path_out + name, sb_temp.toString(), null);
     }
 
     @Test
     public void makeDocs() {
-        String path = "C:\\Users\\jw362j\\a\\z_temp\\古文观止\\古文观止_注音注解_html";
-
-        File fs = new File(path);
-        File[] fs_tmp = fs.listFiles();
-        for (int i = 0; i < fs_tmp.length; i++) {
-            if (fs_tmp[i].getAbsolutePath().endsWith("html")) {
-                makeCodedWords(fs_tmp[i].getAbsolutePath(), fs_tmp[i].getName());
-            }
-        }
+        String path = "C:\\Users\\jw362j\\Desktop\\gwgzj\\input.txt";
+        makeCodedWords(path, "output.txt");
 
     }
 
