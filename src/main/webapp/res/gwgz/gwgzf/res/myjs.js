@@ -36,6 +36,5 @@ var url_baike = "http://www.baike.com/wiki/";
 var url_handian = "http://www.zdic.net/z/1a/js/"; //   漢典
 
 function openDictionary(theword) {
-    url_baidu = url_baidu+theword;
-    window.open(url_baidu);
+    window.open(url_baidu+theword);
 }

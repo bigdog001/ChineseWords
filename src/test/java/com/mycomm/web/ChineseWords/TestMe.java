@@ -27,7 +27,7 @@ public class TestMe {
 
     public void makeCodedWords(String path, String name) {
 //        String path = "C:\\Users\\jw362j\\a\\z_temp\\古文观止\\古文观止_注音注解_html\\25.html";
-        String path_out = "C:\\Users\\jw362j\\Desktop\\gwgzj\\";
+        String path_out = "C:\\Users\\jw362j\\Desktop\\gwgzj\\output\\";
         String content = SystemUtil.ReadFromFile(path, null);
         StringBuilder sb_temp = new StringBuilder();
         int length = content.length();
@@ -49,12 +49,23 @@ public class TestMe {
         SystemUtil.WriteIntoFile(path_out + name, sb_temp.toString(), null);
     }
 
-    @Test
+    
     public void makeDocs() {
-        String path = "C:\\Users\\jw362j\\Desktop\\gwgzj\\input.txt";
+        String path = "C:\\Users\\jw362j\\Desktop\\gwgzj\\input\\";
         makeCodedWords(path, "output.txt");
 
     }
+    @Test
+    public void touch(){
+        String path = "C:\\Users\\jw362j\\Desktop\\gwgzj\\input\\";
+        File fs = new File(path);
+        File fs_[] = fs.listFiles();
+        
+        for(File f:fs_){
+            makeCodedWords(f.getAbsolutePath(), f.getName());
+        }
+    }
+        
 
     private boolean isChinese(char c) {
         Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
