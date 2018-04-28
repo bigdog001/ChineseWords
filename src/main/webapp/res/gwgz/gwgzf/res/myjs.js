@@ -3,7 +3,7 @@ var flag_means = 0;
 $(document).ready(function () {
     $("#fullcontent").hide();
     $("#fullcontent_means").hide();
-    $("#fullcontent_means").prepend("<select onchange='changeSearchEngine()' id='changeSearchEngine' ><option value='0'>选择字典</option><option value='http://dict.baidu.com/s?wd='>baidu</option><option value='https://www.google.com/search?q='>google</option><option value='http://www.baike.com/wiki/'>baike</option></select><br/>");
+    $("#fullcontent_means").prepend("<select onchange='changeSearchEngine()' id='changeSearchEngine' ><option value='0'>选择字典</option><option value='http://dict.baidu.com/s?wd='>baidu</option><option value='https://www.google.com/search?q='>google</option><option value='http://www.baike.com/wiki/'>baike</option></select><br/><br/><br/>");
     $("#hideshow").click(function () {
         if (flag === 0) {
             $("#fullcontent").show();
