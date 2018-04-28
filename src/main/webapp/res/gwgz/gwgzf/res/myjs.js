@@ -3,6 +3,7 @@ var flag_means = 0;
 $(document).ready(function () {
     $("#fullcontent").hide();
     $("#fullcontent_means").hide();
+    $("#fullcontent_means").prepend("<select onchange='changeSearchEngine()' id='changeSearchEngine' ><option value='0'>选择字典</option><option value='http://dict.baidu.com/s?wd='>baidu</option><option value='https://www.google.com/search?q='>google</option><option value='http://www.baike.com/wiki/'>baike</option></select><br/>");
     $("#hideshow").click(function () {
         if (flag === 0) {
             $("#fullcontent").show();
@@ -31,10 +32,16 @@ $(function () {
 });
 
 var url_baidu = "http://dict.baidu.com/s?wd=";
-var url_google = "https://www.google.com/search?q=";
-var url_baike = "http://www.baike.com/wiki/";
-var url_handian = "http://www.zdic.net/z/1a/js/"; //   漢典
-
+var current_dictionary = "http://dict.baidu.com/s?wd=";
 function openDictionary(theword) {
-    window.open(url_baidu+theword);
+    window.open(current_dictionary + theword);
+}
+
+function changeSearchEngine() {
+    var searchEngine_s = $("#changeSearchEngine").val();
+    if(searchEngine_s === "0"){
+        return ;
+    }
+//    alert(searchEngine_s);
+    current_dictionary = searchEngine_s;
 }
